@@ -1,4 +1,4 @@
-FROM node:18.x
+FROM node:20
 RUN apt-get update && \
     apt-get install -y libvips-dev
 ARG NODE_ENV=development
