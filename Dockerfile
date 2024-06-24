@@ -1,5 +1,6 @@
 FROM node:16
-RUN apt-get update && apt-get install libvips-dev -y
+RUN apt-get update && \
+    apt-get install -y libvips-dev
 ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /opt/
