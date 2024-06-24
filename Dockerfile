@@ -1,5 +1,5 @@
-FROM node:18-alpine3.18
-RUN apk update && apk install libvips-dev -y
+FROM node:16
+RUN apt-get update && apt-get install libvips-dev -y
 ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /opt/
