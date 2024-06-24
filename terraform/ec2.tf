@@ -37,7 +37,7 @@ resource "aws_security_group" "strapi-sg-let" {
 
 resource "aws_instance" "strapi-ec2-let" {
   ami                         = var.ami
-  instance_type               = "t2.medium"
+  instance_type               = "t2.micro"
   vpc_security_group_ids      = [aws_security_group.strapi-sg-let.id]
   subnet_id                   = aws_subnet.public_subnet1.id
   key_name                    = "PEM-NV"
