@@ -47,7 +47,7 @@ resource "aws_instance" "strapi-ec2-let" {
                                 #!/bin/bash
                                 sudo apt update && sudo apt install docker.io docker-compose -y
                                 sudo systemctl enable docker && sudo usermod -aG docker ubuntu
-                                git clone https://github.com/leticia/Strapi_ec2_docker.git
+                                git clone https://github.com/leticia2983/Strapi_ec2_docker.git
                                 cd Strapi_ec2_docker
                                 docker-compose up -d
                                 sleep 2000
