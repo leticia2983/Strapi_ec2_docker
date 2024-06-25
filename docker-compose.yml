@@ -3,7 +3,7 @@ services:
   strapi:
     container_name: strapi
     build: .
-    image: strapi:latest
+    image: leticia888444/strapi_docker:1.0
     restart: unless-stopped
     env_file: .env
     environment:
