@@ -1,14 +1,20 @@
-FROM node:18
-RUN apt-get update && \
-    apt-get install -y libvips-dev
-ARG NODE_ENV=development
-ENV NODE_ENV=${NODE_ENV}
-WORKDIR /opt/
-COPY ./package.json ./yarn.lock ./
-ENV PATH /opt/node_modules/.bin:$PATH
-RUN yarn config set network-timeout 600000 -g && yarn install
-WORKDIR /opt/app
-COPY ./ .
-RUN yarn build
+# Use an official Node.js runtime as a parent image
+FROM node:14-alpine
+
+# Set the working directory in the container
+WORKDIR /usr/src/app
+
+# Install Strapi CLI globally
+RUN npm install -g strapi@latest
+
+# Create a new Strapi project
+RUN strapi new my-strapi-app --quickstart --no-run
+
+# Set the working directory to the Strapi project
+WORKDIR /usr/src/app/my-strapi-app
+
+# Expose the Strapi default port
 EXPOSE 1337
-CMD ["yarn", "develop"]
+
+# Start Strapi
+CMD ["npm", "start"]

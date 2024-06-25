@@ -43,15 +43,7 @@ resource "aws_instance" "strapi-ec2-let" {
   subnet_id                   = aws_subnet.public_subnet1.id
   key_name                    = var.keyname
   associate_public_ip_address = true
-  user_data                   = <<-EOF
-                                #!/bin/bash
-                                sudo apt update && sudo apt install docker.io docker-compose -y
-                                sudo systemctl enable docker && sudo usermod -aG docker ubuntu
-                                git clone https://github.com/leticia2983/Strapi_ec2_docker.git
-                                cd Strapi_ec2_docker
-                                docker-compose up -d
-                                sleep 2000
-                                EOF
+  user_data                   = file("user_data.sh")
 
   tags = {
     Name = "Strapi_ec2-let"
